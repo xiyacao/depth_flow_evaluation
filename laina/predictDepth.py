@@ -1,18 +1,15 @@
-import argparse
-import os
 import numpy as np
 import tensorflow as tf
-from matplotlib import pyplot as plt
 from PIL import Image
 
 import models
 
-def predictDepth(model_data_path, image_list):
+def predictDepth(image_list, pwd):
 
     depth = []
     # Default input size
-    height = 228
-    width = 304
+    height = 128
+    width = 416
     channels = 3
     batch_size = 1
    
@@ -29,7 +26,7 @@ def predictDepth(model_data_path, image_list):
 
         # Use to load from ckpt file
         saver = tf.train.Saver()     
-        saver.restore(sess, model_data_path)
+        saver.restore(sess, pwd + '/laina/NYU_FCRN.ckpt')
 
         # Use to load from npy file
         #net.load(model_data_path, sess) 
@@ -42,13 +39,13 @@ def predictDepth(model_data_path, image_list):
             pred = sess.run(net.get_output(), feed_dict={input_node: img})
             depth.append(pred[0,:,:,0])
     depth = np.array(depth)
-    np.save("output/depth.npy", depth)
+    np.save(pwd + "/laina/output/depth.npy", depth)
         
     return depth
         
                 
 
         
-depth = predictDepth('NYU_FCRN.ckpt', ['demo_nyud_rgb.jpg','demo_nyud_rgb.jpg'])
+#depth = predictDepth('NYU_FCRN.ckpt', ['demo_nyud_rgb.jpg','demo_nyud_rgb.jpg'])
 
 

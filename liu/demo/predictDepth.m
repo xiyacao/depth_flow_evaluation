@@ -1,17 +1,5 @@
 
 
-
-%code author: Fayao Liu and Guosheng Lin
-%contact: fayao.liu@adelaide.edu.au; guosheng.lin@adelaide.edu.au
-
-%NOTE:
-% 1. we provide two trained models (indoor scene model trained on NYU v2 and outdoor scene
-% model trained on Make3D), which can be used for evaluating general images.
-% 2. when evaluating on NYU v2 or Make3D dataset, the results might be slightly
-% different due to different SLIC superpixel over-segmentations.
-
-
-
 function preds = predictDepth(filepath, varargin)
 
 

@@ -7,17 +7,16 @@ Created on Wed Mar 14 01:35:42 2018
 """
 
 from __future__ import division
-import os
 import numpy as np
-import time
 import PIL.Image as pil
 import tensorflow as tf
 from SfMLearner import SfMLearner
 
-def predictDepth(filelist):
+def predictDepth(filelist, pwd):
     img_height=128
     img_width=416
-    ckpt_file = 'models/model-190532'
+    
+    ckpt_file = pwd + '/zhou/models/model-190532'
     sfm = SfMLearner()
     sfm.setup_inference(img_height,
                         img_width,
@@ -34,7 +33,7 @@ def predictDepth(filelist):
             pred = sfm.inference(I[None,:,:,:], sess, mode='depth')
             depth.append(pred['depth'][0,:,:,0])
     depth = np.array(depth)
-    np.save("output/depth.npy", depth)
+    np.save(pwd + "/zhou/output/depth.npy", depth)
     return depth
 
-depth = predictDepth(['pic/sample.png', 'pic/sample1.png'])
+#depth = predictDepth(['pic/sample.png', 'pic/sample1.png'])
