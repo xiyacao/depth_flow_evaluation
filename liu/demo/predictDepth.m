@@ -30,7 +30,7 @@ ds_config=[];
 % 2. max_img_edge: resize the image with the largest edge <= max_img_edge
 if strcmp(img_type, 'outdoor') 
     ds_config.sp_size=16;
-    ds_config.max_img_edge=600; 
+    ds_config.max_img_edge=416; 
     
     %outdoor scene model
     trained_model_file='../model_trained/model_dcnf-fcsp_Make3D'; 

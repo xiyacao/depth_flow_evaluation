@@ -8,8 +8,8 @@ def predictDepth(image_list, pwd):
 
     depth = []
     # Default input size
-    height = 128
-    width = 416
+    height = 128 * 2
+    width = 416 * 2
     channels = 3
     batch_size = 1
    

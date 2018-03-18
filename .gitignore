@@ -1,7 +1,9 @@
+/liu/output
 /liu/model_trained
 /laina/NYU_FCRN.ckpt.data-00000-of-00001
 /laina/NYU_FCRN.ckpt.meta
 /liu/test
+/liu/test__
 /kitti_raw_data
 /laina/NYU_FCRN.ckpt.index
 /laina/output

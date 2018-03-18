@@ -47,6 +47,7 @@ def calculateDepth(method):
         depth = lpD.predictDepth(filelist, pwd)
     elif method == "liu":
         prepareMatlab(pwd + "/liu/test")
+        print "Run Matlab!"
     else:
         print "Have not implement!"
     return depth
