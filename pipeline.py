@@ -9,12 +9,13 @@ Created on Wed Mar 14 02:19:08 2018
 from __future__ import division
 import zhou.predictDepth as zpD
 import laina.predictDepth as lpD
+import godard.predictDepth as gpD
 import argparse
 import evalmatrix
 import shutil
 import os
 parser = argparse.ArgumentParser()
-parser.add_argument("--method", type=str, required=True, choices=["zhou", "laina", "liu", "eigen"], help="method to evaluate")
+parser.add_argument("--method", type=str, required=True, choices=["zhou", "laina", "liu", "eigen", 'godard'], help="method to evaluate")
 #parser.add_argument("--num_threads", type=int, default=4, help="number of threads to use")
 args = parser.parse_args()
 
@@ -45,6 +46,8 @@ def calculateDepth(method):
         depth = zpD.predictDepth(filelist, pwd)
     elif method == "laina":
         depth = lpD.predictDepth(filelist, pwd)
+    elif method == "godard":
+        depth = gpD.predictDepth(filelist, pwd)
     elif method == "liu":
         prepareMatlab(pwd + "/liu/test")
         print "Run Matlab!"
